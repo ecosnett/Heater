@@ -1,12 +1,21 @@
-import socket
+import sqlite3 
 
-HOST = ''
+conn = sqlite3.connect("./HeaterSchedules")
+cur = conn.cursor()
 
-PORT = ''
-
-conn = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-conn.timeout(5.0)
+cur.execute("CREATE TABLE IF NOT EXISTS Schedules (id INTEGER PRIMARY KEY AUTOINCREMENT, Day INTEGER, Hour INTEGER, Min INTEGER, Active INTEGER)")
 
 
 
-conn.close()
+# cur.execute("INSERT INTO Schedules (Day, Hour, Min, Active) VALUES (1, 08, 00, true)")
+# cur.execute("INSERT INTO Schedules (Day, Hour, Min, Active) VALUES (2, 08, 00, true)") 
+# cur.execute("INSERT INTO Schedules (Day, Hour, Min, Active) VALUES (3,08, 00, true)") 
+# cur.execute("INSERT INTO Schedules (Day, Hour, Min, Active) VALUES (4, 08, 00, true)") 
+# cur.execute("INSERT INTO Schedules (Day, Hour, Min, Active) VALUES (5, 08, 00, true)") 
+# conn.commit()
+
+cur.execute("SELECT * FROM Schedules")
+print(cur.fetchall())
+ 
+
+
