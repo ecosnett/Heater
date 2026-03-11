@@ -94,7 +94,7 @@
                 <div class="schedule-text">
                     <strong>{{ item[1] }}</strong> at {{ item[2] }}
                 </div>
-                <form method="POST" action="/delete"></form>
+                <form method="POST" action="/delete">
                     <input type="hidden" name="item_id" value="{{ item[0] }}">
                     <button type="submit">Delete</button>
                 </form>
