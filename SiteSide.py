@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify
 from DbFunctions import GetSchedule, RemoveSchedule, InsertRecord, CheckActive
-import time
 from datetime import datetime, timedelta
 
 now = datetime.now()
