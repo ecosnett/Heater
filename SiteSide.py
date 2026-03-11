@@ -74,7 +74,7 @@ def submit():
     print(days, hour, minute, active)
     InsertSchedule(days, hour, minute, active)
     formatData()
-    return "OK"
+    return redirect(url_for('index'))
 
 @app.route('/heater', methods=['POST'])
 def Heater():
