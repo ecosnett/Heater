@@ -1,6 +1,6 @@
 import sqlite3 
 
-conn = sqlite3.connect("./HeaterSchedules")
+conn = sqlite3.connect("./HeaterSchedules.db")
 cur = conn.cursor()
 
 cur.execute("CREATE TABLE IF NOT EXISTS Schedules (id INTEGER PRIMARY KEY AUTOINCREMENT, Day INTEGER, Hour INTEGER, Min INTEGER, Active INTEGER)")
