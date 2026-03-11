@@ -9,6 +9,7 @@ daysOfTheWeek = ("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","
 app = Flask(__name__)
 
 def formatData(day = 7):
+    global data
     data = GetSchedule(day)
     FormattedData = []
     for record in data:
