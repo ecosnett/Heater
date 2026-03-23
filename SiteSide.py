@@ -107,6 +107,20 @@ def delete():
     RemoveSchedule(ItemId)
     return redirect(url_for('index'))
 
+@app.route("/date", methods=["POST"])
+def date():
+    now = datetime.now()
+    day = daysOfTheWeek(now)
+    response = {
+        "year": now.year,
+        "month": now.month,
+        "day": day,
+        "hour": now.hour,
+        "minute": now.minute
+    }
+    return jsonify(response)
+
+
 if __name__ == "__main__":
     formatData()
     app.run(host="0.0.0.0", port=5000)

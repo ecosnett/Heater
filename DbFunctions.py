@@ -1,7 +1,7 @@
 import sqlite3
 
 def GetSchedule(day = 7):
-    conn = sqlite3.connect("./HeaterSchedules")
+    conn = sqlite3.connect("./HeaterSchedules.db")
     cur = conn.cursor()
     if day == 7:
         cur.execute("SELECT * FROM Schedules")
@@ -17,7 +17,7 @@ def GetSchedule(day = 7):
 
 def RemoveSchedule(id):
     id = str(id)
-    conn = sqlite3.connect("./HeaterSchedules")
+    conn = sqlite3.connect("./HeaterSchedules.db")
     cur = conn.cursor()
     cur.execute("DELETE FROM Schedules where ID = ?", (id,))
     conn.commit()
@@ -26,7 +26,7 @@ def RemoveSchedule(id):
 def InsertRecord(day, hour, mins, active):
     if active == None:
         active = 0
-    conn = sqlite3.connect("./HeaterSchedules")
+    conn = sqlite3.connect("./HeaterSchedules.db")
     cur = conn.cursor()
     cur.execute("INSERT INTO Schedules (Day, Hour, Min, Active) VALUES (?, ?, ?, ?)", (day, hour, mins, active))
     conn.commit()
@@ -34,7 +34,7 @@ def InsertRecord(day, hour, mins, active):
 
 def CheckActive(id):
     id = str(id)
-    conn = sqlite3.connect("./HeaterSchedules")
+    conn = sqlite3.connect("./HeaterSchedules.db")
     cur = conn.cursor()
     cur.execute("SELECT Active FROM Schedules where id = ?", (id,))
     data = cur.fetchall()
@@ -45,4 +45,6 @@ def CheckActive(id):
 
 
 print(GetSchedule())
+
+GetSchedule()
 
